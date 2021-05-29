@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="target-densitydpi=device-dpi">
+    <meta name='viewport' content='width=device-width, initial-scale=1'>
+    <meta name="viewport" content="user-scalable=yes">
+    <link rel="stylesheet" href="../../CSS/signup.css">
+	<title>Sign Up Page</title>
+</head>
+
+<body>
+    <header>
+            <a class="nav" href="login.html">
+                <button class='nonactive' type="button">Login</button>
+            </a>
+            <a class="nav" href="signup.html">
+                <button class='active' type="button">Sign Up</button>
+            </a>
+    </header>
+    <form>
+        <fieldset>
+            <label><label class="headings">First Name</label><br><br><input class="bottom-border" type='text' name = 'firstname' required></label><br><br><br>
+            <label><label class="headings">Last Name</label><br><br><input class="bottom-border" type='text' name = 'lastname'  required></label><br><br><br>
+            <label><label class="headings">Email</label><br><br><input class="bottom-border" type='email' name = 'email' placeholder="abc@xyz.com" required> </label><br><br><br>
+            <label class="headings">Password</label><br><br><input class="bottom-border" type='password' name='password' required></label><br><br><br>
+            <label class="headings">Confirm Password</label><br><br><input class="bottom-border" type='password' name='password' required></label><br><br><br>
+            <label class="headings">Select Gender</label><br><br>
+            <label><input type="radio" name="sex" value="male" >Male</label>
+            <label><input type="radio" name="sex" value="female" >Female</label><br><br><br>
+            <label><label class="headings">Address</label><br><br> <input class="bottom-border" type='address' name = 'address' placeholder="Type your address here"> </label><br><br><br>
+            <div class='form'>
+                <button class="submit" type="submit">Sign Up</button><br><br>
+                <span class='spantext'>Already have an account, login here.</span><br>
+                <a class="nav" href="login.html">
+                    <button class='lastbtn'type="button">Login</button>
+                </a>
+            </div>
+        </fieldset>
+    </form>
+</body>
+</html>
