@@ -47,18 +47,21 @@ body {
 
   .item {
     background-color: #EDF5E1;
+    transition: all .2s ease;
+    border: 8px solid #05386B;
+    border-radius: 5%;
     font-size: 20px;
     margin: 0 auto;
     margin-bottom: 50px;
     padding: 20px;
     width: 200px;
-    box-shadow: rgba(0, 0, 0, 0.06) 0px 2px 4px;
-    transition: all .3s linear;
+    opacity: 0.8;
   }
 
   .item:hover {
-    box-shadow: rgba(0, 0, 0, 0.22) 0px 19px 43px;
+    box-shadow: rgba(50, 50, 93, 0.25) 0px 30px 60px -12px, rgba(0, 0, 0, 0.3) 0px 18px 36px -18px;
     transform: translate3d(0px, -1px, 0px);
+    opacity: 1.0;
     cursor: pointer;
   }
 
@@ -77,11 +80,12 @@ body {
     font-size: medium;
     font-weight:bold;
     width: 60%;
-    margin-top: 16px;
+    margin-top: 16%;
     margin-left: 20%;
-    padding-top: 10px;
-    padding-bottom: 10px;
-    border: 0;
+    padding-top: 5%;
+    padding-bottom: 5%;
+    border: none;
+    border-radius:8%;
   }
 
   button:hover {
