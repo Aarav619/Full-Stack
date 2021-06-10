@@ -225,4 +225,29 @@ var obj = {
   },
 };
 
-console.log(obj?.placestovisit?.locations)
+// console.log(obj?.placestovisit?.locations)
+
+// The async function declaration defines an asynchronous function, which returns an AsyncFunction object. 
+// When an async function is called, it returns a Promise . 
+// async function can be used without await keyword
+
+async function myFunction() {
+  return "Hello";
+}
+// .then will return the resolved value of the promise
+myFunction().then((value) => {
+  console.log(value);
+});
+
+let testFunction = async () => {
+  let testPromise = new Promise((Resolve, Reject) => {
+    setTimeout(() => {
+      Resolve("Its! Resolved part of a promise");
+    }, 3000);
+  });
+  let result = await testPromise; //The await expression causes async function execution to pause until a Promise is settled (that is, fulfilled or rejected), and to resume execution of the async function after fulfillment.
+  console.log(result);
+  // return result;
+};
+
+testFunction();

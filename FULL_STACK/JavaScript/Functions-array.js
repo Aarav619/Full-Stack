@@ -97,8 +97,10 @@
 
 // switchCase(5);
 
-// // Call Back Functions
+// // Call Back Functions : A callback is a function passed as an argument to another function.
 // // callback = parameter of function which is also a function.
+
+// example for callback function
 // function sum(a, b, add) {
 //     var sumoftwo = a + b;
 //     console.log("sum from sum function:" + sumoftwo);
@@ -108,10 +110,22 @@
 //     var sumoftwo = x + y;
 //     return sumoftwo;
 // }
-
 // sum(4,5,add);
 
-// // Example for callback function:
+// 2.
+
+// function myDisplayer(some) {
+//   document.getElementById("demo").innerHTML = some;
+// }
+
+// function myCalculator(num1, num2, myCallback) {
+//   let sum = num1 + num2;
+//   myCallback(sum);
+// }
+
+// myCalculator(5, 5, myDisplayer);
+
+// // Another Example for callback function:
 // function verifyUserCredentials(inputEmail, inputPassword) {
 //     var user = User.findOne({ email: inputEmail }, function (error) {
 //       if (!error) {
@@ -141,18 +155,84 @@
 // });
 // console.log(sqarr)
 
-//closures
+// more examples for map reduce and filter
 
-var add = (function () {
-  var counter = 0;
-  return function () { counter += 1; return counter }
-})();
+// var array = [1, 10, 18, 26, 84];
+// var arr2 = array.filter((el) => {
+//   return el < 20;
+// });
+// console.log(arr2);
 
-x = add();
-x = add();
-x = add();
-console.log(x)
+// var myArray = [100, 28, 50];
+// var myArr2 = myArray.reduce((total, el) => {
+//   return total + el;
+// });
+// console.log(myArr2);
 
+// var numbers = [1, 2, 3, 4, 5, 6];
+
+// let sum = numbers.reduce((totalValue, currentValue) => totalValue + currentValue)
+
+// console.log(sum);
+
+// var strArr = ["John", "Ashley", "Joe", "Taylor"];
+
+// let string = strArr.reduce((startEl, currentEl) => {
+//   return startEl + currentEl;
+// });
+
+// console.log(string);
+
+//hoistings 
+//In JS variables can be declared after they are defined
+// let and const keywords are hoisted to top of the block , but are not initialised ,Meaning: The block of code is aware of the variable, 
+//but it cannot be used until it has been declared. 
+
+// var z;
+// z=1
+// console.log(z)
+// // or 
+// t=1
+// var t
+// console.log(t)
+
+//another example
+// greet = "hello"                                                          
+// ele = document.getElementById("div");                                          
+// ele.innerHTML=greet;
+// var greet;
+// is same as following
+// var greet
+// greet ="hello";
+// ele = document.getElementById("div");
+// ele.innerHTML=greet;
+
+//closures: A closure is a function having access to the parent scope, even after the parent function has returned.
+
+// var add = (function () {                               //The variable add is assigned to the return value of a self-invoking function.
+//   var counter = 0;                                    // The self-invoking function only runs once. It sets the counter to zero , and returns a function expression.              
+//   return function () { counter += 1; return counter }  //The counter is protected by the scope of the anonymous function, and can only be changed using the add function.
+// })();
+
+// add();
+// add();
+//add();
+// console.log(add)
+
+//another example
+// function testFunction1() {
+//   var a = 100;
+//   function testFunction2() {
+//     var b = 200;
+//     return function () {
+//       console.log(a, b);
+//     };
+//   }
+//   return testFunction2();
+// }
+// var x = testFunction1();
+// console.log(x)
+// x()
 
 
 
