@@ -11,7 +11,7 @@ body{
     background-color: #eee;
 }
 
-.container{
+.parent-container{
     width: 300px;
     position: absolute;
     top: 50%;
@@ -20,19 +20,26 @@ body{
     box-shadow: 0 0 20px 3px #00000029;
 
 }
-.result-display{
+.output-screen{
     width: 280px;
     padding: 50px 10px;
     text-align: right;
-    color: white;
-    background: linear-gradient(45deg, #405de6, #5851db, #833ab4, #c13584, #e1306c, #fd1d1d);
+    color: #4285F4;
+    background: #ffffff;
 }
-.num{
+.calc-btns{
     border: none;
     padding: 15px 5px;
     width: 75px;
+    box-sizing: border-box;
 }
-.num-body{
+.calc-btns:hover{
+    color:#4285F4;
+}
+.calc-btns:focus{
+    border: 1px solid #4285F4;
+}
+.calc-body{
     display: flex;
     flex-wrap: wrap;
     text-align: center;
@@ -40,7 +47,7 @@ body{
 .bg-white{
     background-color: white !important;
 }
-.bg-g{
-    background: linear-gradient(45deg, #405de6, #5851db, #833ab4, #c13584, #e1306c, #fd1d1d);
-    color: white;
+.bg-blue{
+    background-color:#4285F4;
+    color: white !important;
 }
