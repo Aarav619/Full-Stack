@@ -31,3 +31,4 @@ function clearAll() {
 if (arr.length === 0) {
     document.getElementById("result").innerHTML = "0";
 }
+    
