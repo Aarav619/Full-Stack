@@ -1,31 +1,33 @@
-var a = [];
-function resul(val){
-    if(a.length < 1){
-        document.getElementById("result").innerHTML ="";
+var arr = [];
+function result(val) {
+    if (arr.length < 1) {
+        document.getElementById("result").innerHTML = "";
     }
-    document.getElementById("result").innerHTML +=val;
-    a.push(val)
+    document.getElementById("result").innerHTML += val;
+    arr.push(val)
 }
 
-    function calc(){
-        if(a.length>0){
-            var aa = a.join('');
-            var solve = eval(aa);
-            document.getElementById("result").innerHTML = solve;
-        }
+function calc() {
+    if (arr.length > 0) {
+        var ele = arr.join('');             //return string format of elements of array
+        var solve = eval(ele);              //this takes string input and evaluates it
+        console.log(ele)
+        document.getElementById("result").innerHTML = solve;
     }
-    function del(){
-        a.pop();
-        document.getElementById("result").innerHTML = a.join('');
-        if(a.length === 0){
-            document.getElementById("result").innerHTML = "0";
-        }
+}
+function del() {
+    arr.pop();                              //to remove elements from end of array 
+    document.getElementById("result").innerHTML = arr.join('');
+    if (arr.length === 0) {
+        document.getElementById("result").innerHTML = "0";
     }
+}
 
-    function clear(){
-        a = [];
-        document.getElementById("result").innerHTML = "0";
-    }
-    if(a.length === 0){
-        document.getElementById("result").innerHTML = "0";
-    }
+function clearAll() {
+    arr = [];
+    document.getElementById("result").innerHTML = ""; //clearing screen 
+}
+//display zero to calc screen if no elements in array
+if (arr.length === 0) {
+    document.getElementById("result").innerHTML = "0";
+}
