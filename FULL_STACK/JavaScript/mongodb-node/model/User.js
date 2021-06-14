@@ -1,6 +1,11 @@
 const mongoose = require('mongoose');
+//Anything stored in database is model
 
 const User = new mongoose.Schema({   //User object conatins "Schema" containing object name "obj" which further conatins the following
+    id:{ 
+        type: mongoose.SchemaTypes.ObjectId,
+    },
+    
     firstName: {
         type: String,
         required: true,
