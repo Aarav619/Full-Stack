@@ -1,5 +1,6 @@
 const User = require("../model/User")
 const mongoose = require("mongoose");
+const JWT = require("jsonwebtoken");//for verification token
 
 exports.findUserbyfirstNameandlastName = (req, res) => {
   let { firstName, lastName } = req.query;
@@ -55,7 +56,7 @@ exports.UpdateUsingEmail = (req, res) => {
 exports.SearchUsingId = (req, res) => {
   let id = req.params.id;
   id = mongoose.Types.ObjectId(id)
-  User.findOne({_id: id})
+  User.findOne({ _id: id })
     .then((user) => {
       if (user) {
         console.info("User found successfully.");
@@ -74,18 +75,32 @@ exports.LoginUsingEmailPass = (req, res) => {
   let { email, password } = req.body;
   User.findOne({ email: email })
     .then((user) => {
-      console.info(`User with email ${email} sucessfully found.`);
-      if (password === user.password) {
-        console.info("login Successful");
-        return res.status(200).send(user);
+      if (user) {
+        console.info(`User with email ${email} sucessfully found.`);
+        if (password === user.password) {
+          const token = JWT.sign(
+            {
+              email: user.email,
+            },
+            "TESTSecretKey",
+            {
+              expiresIn: "1h",
+            }
+          );
+          console.info("login Successful");
+          return res.status(200).send({ user, token })
+        };
+        console.warn("Password Incorrect!");
+        return res.status(401).send("Password was incorrect")
       }
-      console.warn("Password Incorrect!");
-      return res.status(401).send("Password was incorrect")
-    })
-    .catch((error) => {
       console.error(`User with the email :${email} doesn't exits`);
       return res.status(404).send(`User with the ${email} doesn't exits!`)
     })
+
+    .catch((error) => {
+      console.error(error);
+      return res.status(500).send(error)
+    });
 }
 
 exports.SignupController = (req, res) => {
@@ -104,3 +119,8 @@ exports.SignupController = (req, res) => {
       return res.status(500).send("ERROR");
     });
 }
+
+//token validation
+exports.isValid = (req, res) => {
+  return res.status(200).send("Token valid");
+};
