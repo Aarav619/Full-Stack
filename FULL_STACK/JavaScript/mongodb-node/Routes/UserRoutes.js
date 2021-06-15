@@ -14,7 +14,7 @@ router.get("/user/:id", controller.SearchUsingId);
 router.put("/update/user/:email", controller.UpdateUsingEmail);
 
 // updating a user with id
-router.put("/update/:id", controller.UpdateUsingId);
+router.put("/update/:id", tokenMiddleware.isTokenValid , controller.updateUser);
 
 // retrieving through path Queries
 router.get("/get-User", controller.findUserbyfirstNameandlastName);
