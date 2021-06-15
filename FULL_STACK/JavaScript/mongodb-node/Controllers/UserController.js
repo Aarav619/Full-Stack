@@ -18,23 +18,23 @@ exports.findUserbyfirstNameandlastName = (req, res) => {
     })
 }
 
-exports.UpdateUsingId = (req, res) => {
-  let { email, password, firstName, lastName } = req.body;
-  let id = req.params.id; //to retrieve id from path/route
-  id = mongoose.Types.ObjectId(id);//making id of objectId type
-  //updateOne(1param ,2param)  1param:"where to update" 2 param :"what to update"
-  User.updateOne({ _id: id },
-    { $set: { email, password, firstName, lastName } }) //$set: internal command for mongodb to update
+// exports.UpdateUsingId = (req, res) => {
+//   let { email, password, firstName, lastName } = req.body;
+//   let id = req.params.id; //to retrieve id from path/route
+//   id = mongoose.Types.ObjectId(id);//making id of objectId type
+//   //updateOne(1param ,2param)  1param:"where to update" 2 param :"what to update"
+//   User.updateOne({ _id: id },
+//     { $set: { email, password, firstName, lastName } }) //$set: internal command for mongodb to update
 
-    .then(() => {
-      console.info("Update Successful");
-      res.status(200).send({ email, password, firstName, lastName });
-    })
-    .catch((error) => {
-      console.error("There was an error while updating!");
-      res.status(500).send("There was an error while updating User!");
-    })
-}
+//     .then(() => {
+//       console.info("Update Successful");
+//       res.status(200).send({ email, password, firstName, lastName });
+//     })
+//     .catch((error) => {
+//       console.error("There was an error while updating!");
+//       res.status(500).send("There was an error while updating User!");
+//     })
+// }
 
 exports.UpdateUsingEmail = (req, res) => {
   let { email, password, firstName, lastName } = req.body;
@@ -78,7 +78,7 @@ exports.LoginUsingEmailPass = (req, res) => {
       if (user) {
         console.info(`User with email ${email} sucessfully found.`);
         if (password === user.password) {
-          const token = JWT.sign(
+          const token = JWT.sign(//token encoding
             {
               email: user.email,
             },
@@ -99,7 +99,7 @@ exports.LoginUsingEmailPass = (req, res) => {
 
     .catch((error) => {
       console.error(error);
-      return res.status(500).send(error)
+      return res.status(500).send("ERROR");
     });
 }
 
@@ -118,6 +118,25 @@ exports.SignupController = (req, res) => {
       console.error(error);
       return res.status(500).send("ERROR");
     });
+}
+
+//Update using ID with token validation
+exports.updateUser = (req, res) => {
+ let id = mongoose.Types.ObjectId(req.params.id);
+ let {firstName, lastName} = req.body;
+ User.updateOne({_id:id} , {firstName, lastName})
+ .then((updateResult) => {
+  if(updateResult){
+    console.info("User was successfully updated.");
+    return res.status(200).send("User updated successfully.")
+  }
+  console.error(`User with ID: ${id} doesn't exits.`);
+  return res.status(404).send(`User with ID: ${id} doesn't exits.`);
+ })
+ .catch((error) => {
+   console.error(error);
+   return res.status(500).send("ERROR");
+ })
 }
 
 //token validation
