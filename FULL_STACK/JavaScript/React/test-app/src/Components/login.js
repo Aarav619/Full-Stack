@@ -4,7 +4,7 @@ import Axios from "axios";
 
 class login extends React.Component {
     state = {
-        user: {}
+        credentials: {} 
     };
     onSubmitClick = async (e) => {
         e.preventDefault();
@@ -13,6 +13,7 @@ class login extends React.Component {
             .then(({data}) => {
                 console.info(data);
                 localStorage.setItem("user", JSON.stringify(data));//to locally store token with user object
+                this.props.setUserState(data.user);
             })
             .catch((error) => {
                 console.error(error);
@@ -31,7 +32,7 @@ class login extends React.Component {
                         onChange={(e) => {
                             this.setState({
                                 user: {
-                                    ...this.state.user,
+                                    ...this.state.credentials,
                                     email: e.target.value,
                                 },
                             });
@@ -40,7 +41,7 @@ class login extends React.Component {
                         onChange={(e) => {
                             this.setState({
                                 user: {
-                                    ...this.state.user,
+                                    ...this.state.credentials,
                                     password: e.target.value,
                                 },
                             });
