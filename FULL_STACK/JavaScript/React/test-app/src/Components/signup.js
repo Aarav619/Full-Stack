@@ -13,6 +13,7 @@ class signup extends React.Component {
             .then(({ data }) => {
                 console.info(data);
                 localStorage.setItem("user", JSON.stringify(data));//to locally store token with user object
+                this.props.setUserState(data.user);
             })
             .catch((error) => {
                 console.error(error);
