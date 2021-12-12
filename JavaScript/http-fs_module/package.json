@@ -1,6 +1,0 @@
-{
-  "dependencies": {
-    "fs": "*",
-    "http": "*"
-  }
-}
