@@ -1,2 +1,2 @@
 # Full-Stack
-This Repository is about MERN STACK
+Contains Basic Javascript topics along with ExpressJS and http-fs module.
