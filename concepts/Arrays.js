@@ -186,9 +186,12 @@ console.log(string);
 
 // hoistings
 // In JS variables can be declared after they are defined
-// let and const keywords are hoisted to top of the block , but are not initialised, Meaning: The block of code is aware of the variable,
-// but it cannot be used until it has been declared.
+// let and const keywords are hoisted to top of the block, but are not initialised, Meaning: The block of code is aware of the variable,
+// but it cannot be used until it has been declared. Refrencing the variable before it is declared will result in an RefrenceError.
 
+// Variables declared with var are hoisted to the top and are initialised with undefined. so we can use them before they are declared.
+
+// example 1:
 var z;
 z = 1;
 console.log(z);
@@ -196,6 +199,18 @@ console.log(z);
 t = 1;
 var t;
 console.log(t);
+
+// example 2:
+// also normal functions are also hoisted to the top but not arrow functions since they are (defined using let and const keywords)
+console.log(sumFunction(1, 2));
+function sumFunction(p, q) {
+	return p + q;
+} // works as intended
+
+console.log(arrowSumFunction(1, 2));
+const arrowSumFunction = (p, q) => {
+	return p + q;
+}; // throws error
 
 // another example
 greet = "hello";
